@@ -19,4 +19,4 @@ jobs:
         uses: laytan/setup-odin@v2
 
       - name: Run Checks
-        run: odin check . -disallow-do -no-entry-point -strict-style -vet -vet-style-vet-tabs -warnings-as-errors
+        run: odin check . -disallow-do -no-entry-point -strict-style -vet -vet-style -vet-tabs -warnings-as-errors
