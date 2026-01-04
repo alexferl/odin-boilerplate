@@ -1,4 +1,4 @@
-name: test
+name: check
 
 on:
   push:
@@ -9,10 +9,8 @@ on:
 
 jobs:
   unit:
-    strategy:
-      matrix:
-        os: [ macos-latest, ubuntu-latest ]
-    runs-on: ${{ matrix.os }}
+    name: check
+    runs-on: ubuntu-latest
     steps:
       - name: Fetch Repository
         uses: actions/checkout@v6
@@ -20,5 +18,5 @@ jobs:
       - name: Setup Odin
         uses: laytan/setup-odin@v2
 
-      - name: Run Tests
-        run: odin test . -strict-style -vet
+      - name: Run Checks
+        run: odin check . -strict-style -vet

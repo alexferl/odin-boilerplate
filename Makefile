@@ -1,4 +1,4 @@
-.PHONY: dev pre-commit run test
+.PHONY: dev pre-commit run check test
 
 .DEFAULT: help
 help:
@@ -8,6 +8,8 @@ help:
 	@echo "	run pre-commit hooks"
 	@echo "make run"
 	@echo "	run application"
+	@echo "make check"
+	@echo "	execute odin check"
 	@echo "make test"
 	@echo "	execute all tests"
 
@@ -25,5 +27,8 @@ pre-commit: check-pre-commit
 run:
 	odin build . -out:app.bin && ./app.bin
 
+check:
+	odin check . -strict-style -vet
+
 test:
-	odin test .
+	odin test . -strict-style -vet
