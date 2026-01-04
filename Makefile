@@ -28,7 +28,7 @@ run:
 	odin build . -out:app.bin && ./app.bin
 
 check:
-	odin check . -strict-style -vet
+	odin check . -disallow-do -no-entry-point -strict-style -vet -vet-style -vet-tabs -warnings-as-errors
 
 test:
-	odin test . -strict-style -vet
+	odin test tests/ -all-packages -disallow-do -sanitize:address -strict-style -vet -vet-style -vet-tabs -warnings-as-errors
